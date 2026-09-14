@@ -1,0 +1,366 @@
+/* ===========================================================
+   Rook Technologies — custom styles
+   Design tokens live in the Tailwind config inside index.html
+   =========================================================== */
+
+:root {
+  --ink: #011a14;
+  --forest: #1b4f39;
+  --lime: #c8f69b;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+
+/* ---------- Header: floating island nav ---------- */
+#site-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  transition: border-color 0.3s ease;
+}
+#site-header.is-solid { border-bottom-color: transparent; }
+
+#nav-island {
+  max-width: 1400px;
+  padding-inline: 8px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+  transition: max-width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.3s ease,
+              border-color 0.3s ease,
+              box-shadow 0.3s ease,
+              padding 0.3s ease;
+}
+#site-header.is-solid #nav-island {
+  max-width: 1060px;
+  padding-inline: 12px;
+  background: rgba(247, 245, 241, 0.72);
+  border-color: rgba(27, 79, 57, 0.14);
+  box-shadow: 0 10px 30px rgba(1, 26, 20, 0.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+          backdrop-filter: blur(20px) saturate(180%);
+}
+
+#site-header [data-nav-ink] { color: #fff; transition: color 0.3s ease; }
+#site-header.is-solid [data-nav-ink] { color: var(--forest); }
+
+#nav-toggle { border-color: rgba(255, 255, 255, 0.25); transition: border-color 0.3s ease; }
+#site-header.is-solid #nav-toggle { border-color: rgba(27, 79, 57, 0.22); }
+#nav-toggle.is-open span > span:first-child { transform: translateY(4px) rotate(45deg); }
+#nav-toggle.is-open span > span:last-child  { transform: translateY(-4px) rotate(-45deg); }
+
+/* Desktop nav links */
+.navlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+.navlink:hover,
+.navlink[aria-expanded="true"] { background: rgba(255, 255, 255, 0.14); }
+#site-header.is-solid .navlink:hover,
+#site-header.is-solid .navlink[aria-expanded="true"] { background: rgba(27, 79, 57, 0.08); }
+
+/* Dropdown */
+.nav-dd { position: relative; }
+.nav-dd__chev { transition: transform 0.25s ease; }
+.nav-dd[data-open="true"] .nav-dd__chev { transform: rotate(180deg); }
+
+.nav-dd__panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  width: min(720px, calc(100vw - 32px));
+  padding: 8px;
+  border: 1px solid rgba(27, 79, 57, 0.12);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+          backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 20px 50px rgba(1, 26, 20, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, -6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.nav-dd[data-open="true"] .nav-dd__panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+.nav-dd__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+.nav-dd__item:hover,
+.nav-dd__item:focus-visible { background: rgba(27, 79, 57, 0.06); }
+.nav-dd__title {
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+  color: var(--forest);
+}
+.nav-dd__desc {
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(11, 20, 25, 0.62);
+}
+
+/* Mobile collapse panel + menu links */
+#mobile-nav:not(.hidden) { display: flex; }
+
+.mobile-link {
+  display: block;
+  font-family: 'Geist Mono', ui-monospace, monospace;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+  color: var(--forest);
+  transition: color 0.15s ease;
+}
+.mobile-link:hover { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  #nav-island, .nav-dd__panel, .nav-dd__chev, #site-header [data-nav-ink] { transition: none; }
+}
+
+/* ---------- Trusted-by marquee ---------- */
+.marquee {
+  display: flex;
+  gap: 72px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 72px;
+  min-width: 100%;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: marquee 55s linear infinite;
+}
+.marquee:hover .marquee__track { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% - 72px)); }
+}
+
+/* client logos inside the marquee
+   Heights are tiered by logo shape so a square mark and a long
+   wordmark carry roughly the same optical weight. */
+.client-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.client-logo--wide { height: 34px; }   /* long wordmarks  (ar >= 3.5) */
+.client-logo--mid  { height: 40px; }   /* ar 2.2 - 3.5 */
+.client-logo--base { height: 46px; }   /* ar 1.4 - 2.2 */
+.client-logo--mark { height: 54px; }   /* square / tall marks (ar < 1.4) */
+
+.client-logo img {
+  height: 100%;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
+  opacity: .78;
+  transition: opacity .25s ease;
+}
+.marquee:hover .client-logo img { opacity: 1; }
+
+@media (max-width: 640px) {
+  .marquee, .marquee__track { gap: 44px; }
+  .client-logo--wide { height: 26px; }
+  .client-logo--mid  { height: 30px; }
+  .client-logo--base { height: 34px; }
+  .client-logo--mark { height: 40px; }
+  .client-logo img { max-width: 170px; }
+}
+
+/* ---------- Wind / Solar tabs ---------- */
+.tab-btn { background: #fff; color: #162625; }
+.tab-btn.is-active { background: var(--forest); color: var(--lime); }
+
+/* ---------- Approach cards ---------- */
+.approach-card {
+  min-height: 320px;
+  transition: flex-grow .55s cubic-bezier(.22,.61,.36,1);
+  cursor: pointer;
+}
+.approach-scrim {
+  background: radial-gradient(120% 90% at 120% 8%, rgba(1,26,20,0) 0%, rgba(1,26,20,.96) 62%, #011a14 100%);
+}
+.approach-copy {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height .45s ease, opacity .35s ease;
+}
+.approach-card.is-active .approach-copy { max-height: 220px; opacity: 1; }
+
+@media (min-width: 1024px) {
+  #approach-track { align-items: stretch; }
+  .approach-card { flex: 1 1 0%; min-height: 0; height: 435.429px; }
+  .approach-card.is-active { flex-grow: 2.3; }
+}
+
+/* ---------- FAQ accordion ---------- */
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  background: #000;
+  border-radius: 62px;
+  transition: transform .3s ease, opacity .3s ease;
+}
+.faq-icon::before { left: 11px; top: 3px;  width: 2px;  height: 18px; }
+.faq-icon::after  { left: 3px;  top: 11px; width: 18px; height: 2px; }
+.faq-trigger[aria-expanded="true"] .faq-icon::before { transform: rotate(90deg); opacity: 0; }
+
+.faq-panel {
+  display: grid;
+  /* minmax(0, …) — a bare 0fr keeps an `auto` minimum, which lets the
+     answer's min-content height leak through as a visible preview strip. */
+  grid-template-rows: minmax(0, 0fr);
+  overflow: hidden;
+  visibility: hidden;
+  transition: grid-template-rows .35s ease, visibility 0s linear .35s;
+}
+.faq-panel > * { min-height: 0; overflow: hidden; }
+.faq-item.is-open .faq-panel {
+  grid-template-rows: minmax(0, 1fr);
+  visibility: visible;
+  transition: grid-template-rows .35s ease, visibility 0s linear 0s;
+}
+
+/* ---------- Scroll reveal ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* ---------- Testimonial track ---------- */
+#tst-track { will-change: transform; }
+
+/* ---------- Forms ---------- */
+.field-error { border-color: #f42a2a !important; }
+
+/* ---------- Primary button (anti-metal) ---------- */
+.btn-anti {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 46px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--lime) 0%, #b6ee80 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+              inset 0 -2px 4px rgba(1, 26, 20, 0.14),
+              0 2px 4px rgba(1, 26, 20, 0.10);
+  cursor: pointer;
+  transition: transform .18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-anti:active { transform: scale(.985); }
+.btn-anti:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+.btn-anti__label {
+  margin-left: auto;
+  padding: 0 18px 0 60px;
+  white-space: nowrap;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 15.4px;
+  letter-spacing: -.42px;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.btn-anti__chip {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: 10;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  overflow: hidden;
+  border-radius: 2px;
+  padding: 0 10px 0 13px;
+  background: var(--ink);
+  box-shadow: inset 0 -2px 4px rgba(1, 26, 20, 0.14),
+              0 2px 4px rgba(1, 26, 20, 0.10);
+  transition: width .22s cubic-bezier(.65, 0, .35, 1);
+}
+.btn-anti:hover .btn-anti__chip,
+.btn-anti:focus-visible .btn-anti__chip { width: calc(100% - 6px); }
+
+.btn-anti__chip svg { flex: none; overflow: visible; }
+.btn-anti__chip svg:nth-of-type(1) { --bd-base: 0s; }
+.btn-anti__chip svg:nth-of-type(2) { --bd-base: .12s; }
+.btn-anti__chip svg:nth-of-type(3) { --bd-base: .24s; }
+.btn-anti__chip svg:nth-of-type(4) { --bd-base: .36s; }
+.btn-anti__chip svg:nth-of-type(5) { --bd-base: .48s; }
+.btn-anti__chip svg:nth-of-type(6) { --bd-base: .60s; }
+.btn-anti__chip svg:nth-of-type(7) { --bd-base: .72s; }
+.btn-anti__chip svg:nth-of-type(8) { --bd-base: .84s; }
+
+.bd-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bd-dot-wave 1.4s ease-in-out infinite;
+  animation-delay: calc(var(--bd-base, 0s) + var(--bd-d, 0s));
+}
+.bd-dot:nth-child(1) { --bd-d: 0s; }
+.bd-dot:nth-child(2), .bd-dot:nth-child(6) { --bd-d: .05s; }
+.bd-dot:nth-child(3), .bd-dot:nth-child(7) { --bd-d: .10s; }
+.bd-dot:nth-child(4), .bd-dot:nth-child(8) { --bd-d: .15s; }
+.bd-dot:nth-child(5), .bd-dot:nth-child(9) { --bd-d: .20s; }
+.bd-dot:nth-child(10) { --bd-d: .25s; }
+
+@keyframes bd-dot-wave {
+  0%, 70%, 100% { opacity: .4; transform: scale(.9); }
+  35%           { opacity: 1;  transform: scale(1); }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
+  .marquee { overflow-x: auto; }
+  .marquee__track + .marquee__track { display: none; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .bd-dot { animation: none; opacity: 1; }
+  .btn-anti__chip { transition: none; }
+  * { scroll-behavior: auto !important; }
+}

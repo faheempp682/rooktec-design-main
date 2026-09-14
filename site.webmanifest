@@ -1,0 +1,14 @@
+{
+  "name": "Rook Technologies — SCADA for wind & solar",
+  "short_name": "Rook",
+  "description": "Real-time monitoring, remote control and analytics for renewable energy plants.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#011a14",
+  "theme_color": "#011a14",
+  "icons": [
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://rooktech.io/</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://rooktech.io/assets/img/og-image.jpg</image:loc>
+      <image:title>Rook SCADA — SCADA solution engineered for your operations</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rooktech.io/assets/img/wind-turbine.webp</image:loc>
+      <image:title>Wind turbine at a plant monitored with Rook SCADA</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rooktech.io/assets/img/solar-panels.webp</image:loc>
+      <image:title>Ground-mounted solar array monitored with Rook SCADA</image:title>
+    </image:image>
+  </url>
+</urlset>

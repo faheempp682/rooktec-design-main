@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Rook Technologies">
+  <rect width="64" height="64" rx="14" fill="#011a14"/>
+  <path d="M18 46V18h13.6c5.9 0 9.6 3.3 9.6 8.6 0 3.9-2 6.7-5.5 7.9L43 46h-7.3l-6-10.3h-4.9V46H18Zm6.8-15.9h6c2.5 0 4-1.3 4-3.4s-1.5-3.4-4-3.4h-6v6.8Z" fill="#f7f5f1"/>
+  <circle cx="46" cy="43" r="4" fill="#c8f69b"/>
+</svg>

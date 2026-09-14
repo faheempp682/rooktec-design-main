@@ -1,0 +1,12 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Image" stroke="#1B4F39" stroke-width="1.9" stroke-linecap="round">
+<path d="M12 12 L4.2 5.2 M12 12 L19.8 5.2 M12 12 L4.2 18.8 M12 12 L19.8 18.8"/>
+</g>
+<g fill="#1B4F39">
+<circle cx="12" cy="12" r="3.4"/>
+<circle cx="4.2" cy="5.2" r="2.6"/>
+<circle cx="19.8" cy="5.2" r="2.6"/>
+<circle cx="4.2" cy="18.8" r="2.6"/>
+<circle cx="19.8" cy="18.8" r="2.6"/>
+</g>
+</svg>

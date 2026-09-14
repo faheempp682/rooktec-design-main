@@ -1,0 +1,9 @@
+# robots.txt — Rook Technologies
+# https://rooktech.io/
+
+User-agent: *
+Allow: /
+Disallow: /assets/img/_source/
+Disallow: /assets/img/clients/_source/
+
+Sitemap: https://rooktech.io/sitemap.xml
